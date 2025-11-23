@@ -1,0 +1,52 @@
+@import "../config.scss";
+
+.mainTextWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // центр по горизонтали
+  position: relative;
+  text-align: center; // центр текста внутри
+  @include border($cl2, $cl1, 3px);
+  padding: 15px;
+  width: min-content;
+  margin: 0 auto;
+
+  @media (max-width: 1000px) {
+    width: 80%;
+  }
+}
+
+.textRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mainText {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.infoButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0;
+}
+
+.subText {
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  margin-top: 0.5rem;
+  font-size: 1.35rem;
+  color: gray;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 200px;
+}

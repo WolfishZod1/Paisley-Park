@@ -1,0 +1,39 @@
+@import "../scss/variables.scss";
+@import "../scss/mixins.scss";
+
+.body {
+  color: $text-color;
+  background-repeat: no-repeat;
+  // background: -webkit-linear-gradient(180deg, #f37f3c3e, #fb96a53e, #d8c1d48e);
+  // background: linear-gradient(180deg, #f37f3c3e, #fb96a53e, #d8c1d46e);
+  overflow-x: hidden;
+  padding-bottom: 1rem;
+  min-height: 115vh;
+  // background-image: url("/bg.png");
+  // background-repeat: repeat;
+}
+
+.body::-webkit-scrollbar {
+  width: 0px;
+}
+
+.main {
+  min-height: 80dvh;
+  width: 70vw;
+  margin: 0 auto;
+  height: 100%;
+  flex-direction: column;
+  row-gap: 7vh;
+
+  @media (max-width: 1000px) {
+    width: 85vw;
+    padding-bottom: 100px;
+  }
+}
+
+.empty {
+  display: inline-block;
+  @include border($cl2, $cl1, 3px);
+  padding: 15px;
+  color: black;
+}

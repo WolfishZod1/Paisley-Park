@@ -1,0 +1,248 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+
+.header {
+  height: 8vh;
+  min-height: 70px;
+  width: calc(100% - 50px);
+  margin: 0 auto;
+  @include flex-center;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+  background-color: $cl1;
+  position: sticky;
+  z-index: 100;
+  padding: 0 25px;
+  transition: transform 0.3s ease;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  font-family: var(--miratrix_font);
+
+  &__nav {
+    a {
+      text-decoration: none;
+      color: $text-color;
+    }
+  }
+
+  &.header_hidden {
+    transform: translateY(-150%);
+  }
+
+  &__logo_container {
+    @include flex-center;
+    column-gap: 2vw;
+    cursor: pointer;
+  }
+
+  &__test {
+    width: max-content;
+    display: flex;
+    gap: 3vw;
+
+    @media (max-width: 899px) {
+      display: none;
+    }
+  }
+
+  &__buttons_container {
+    @extend .header__logo_container;
+    justify-content: flex-end;
+    min-height: 44px;
+    height: min-content;
+    width: 15vw;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 3px 3px;
+    background-color: rgb(220, 218, 218);
+    border-radius: 100vw;
+    border: 3px solid #b9b4b4;
+    text-align: center;
+    display: flex;
+  }
+}
+
+.logo_container {
+  &__svg {
+    width: 100%;
+    min-width: 30px;
+    max-height: 6vh;
+  }
+
+  &__text {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+
+.buttons_container {
+  &__btn {
+    @include glass-shell;
+    width: 10vw;
+    max-width: 100%;
+    min-width: 50%;
+    height: 50%;
+    color: $white-color;
+    padding: 0;
+    border: none;
+    @include flex-center;
+    overflow: hidden;
+    transition: all 150ms ease;
+    font-family: "Comfortaa", sans-serif;
+
+    &:focus {
+      outline-color: $purple-active-color;
+      color: $green-color;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        outline-color: $purple-active-color;
+        color: $green-color;
+      }
+    }
+  }
+
+  &__user {
+    max-height: 4dvh;
+    max-width: 4dvh;
+    min-width: 30px;
+    min-height: 30px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.user {
+  &__img {
+    outline: 3px solid $error-color;
+    border-radius: 1000px;
+    transition: all 450ms ease;
+  }
+
+  &__img-auth {
+    @extend .user__img;
+    outline: 3px solid $green-color;
+  }
+
+  &__show_btn {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__info_wrapper {
+    position: absolute;
+    width: max-content;
+    right: 1vh;
+    height: 75%;
+    bottom: -130%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: 1;
+    transition: all 200ms ease-in;
+    z-index: 1;
+    min-height: 25px;
+    cursor: default;
+  }
+
+  &__info_wrapper-logout {
+    position: absolute;
+    transform: translateX(60%);
+    width: max-content;
+    height: 75%;
+    bottom: -130%;
+    z-index: 1;
+    transition: all 200ms ease-in;
+    opacity: 1;
+    cursor: pointer;
+    min-height: 25px;
+  }
+
+  &__info_wrapper-logout-hidden {
+    position: absolute;
+    transform: translateX(0);
+    width: max-content;
+    height: 75%;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: all 200ms ease-in;
+  }
+
+  &__info_wrapper-hidden {
+    @extend .user__info_wrapper;
+    bottom: 0;
+    opacity: 0;
+    height: 0;
+    z-index: -1;
+    right: 0;
+  }
+}
+
+.info_wrapper {
+  &__container {
+    @include glass-shell;
+    @include flex-center;
+    max-width: 100%;
+  }
+}
+
+.container {
+  &__text {
+    margin: min(7px, 2vw);
+    overflow-y: auto;
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap;
+    border-radius: 100vw;
+  }
+
+  &__text::-webkit-scrollbar {
+    height: 0.5vh;
+    background-color: transparent;
+  }
+
+  &__text::-webkit-scrollbar-thumb {
+    background-color: $purple-color;
+    border-radius: 100vw;
+  }
+
+  &__logout_text {
+    width: 100%;
+    margin: min(7px, 2vw);
+    overflow: hidden;
+    line-height: normal;
+  }
+}
+
+.home_svg {
+  stroke: grey;
+}
+
+.btn_hidden {
+  display: auto;
+}
+
+@media (max-width: 1000px) {
+  .btn_hidden {
+    display: none;
+  }
+}

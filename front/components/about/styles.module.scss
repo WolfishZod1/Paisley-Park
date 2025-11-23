@@ -1,0 +1,144 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+$size: 17vw;
+
+@mixin bg {
+  @include border($cl1, $cl2, 2px);
+  margin-bottom: 40px;
+  padding: 30px;
+  background-color: rgba(153, 253, 253, 0.101);
+}
+
+.main {
+  width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  line-height: 200%;
+  font-weight: 200;
+  font-size: 2rem;
+  @include bg;
+
+  &::first-line {
+    font-weight: 800;
+  }
+}
+
+.text_span {
+  &__strong {
+    color: $purple-active-color;
+  }
+
+  &__medium {
+    color: $light-purple_color;
+  }
+
+  &__light {
+    color: $light-purple-color;
+  }
+}
+
+.sub_title {
+  text-align: center;
+  font-size: 1.2rem;
+  @include bg;
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  margin-top: 7vh;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1vw;
+  }
+}
+
+.cont_rev {
+  @extend .cont;
+  flex-direction: column-reverse;
+}
+
+.name_desc {
+  @include bg;
+  color: $cl2;
+
+  &__prof {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+
+  &__desc {
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding-left: 1vw;
+    line-height: 130%;
+  }
+}
+
+.avatar_role {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: $size;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: $size;
+    border: 3px solid $purple-color;
+    border-radius: 100vw;
+  }
+
+  h2 {
+    font-weight: 400;
+    color: $cl2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    width: 90vw;
+    margin: 0 auto;
+    padding-bottom: 5vh;
+  }
+
+  .cont {
+    &__item {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .avatar_role {
+    div {
+      width: 50vw;
+      height: 50vw;
+    }
+  }
+
+  .name_desc {
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}

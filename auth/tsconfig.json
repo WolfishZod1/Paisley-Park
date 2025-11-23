@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "types": ["node", "multer"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src",
+    "src/routes/Achievements.ts",
+    "src/routes/taskComp.ts",
+    "src/routes/Tasks.ts",
+    "src/routes/UserAchievements.ts"
+  ],
+  "exclude": ["node_modules"]
+}

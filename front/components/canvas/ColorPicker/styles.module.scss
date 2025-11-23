@@ -1,0 +1,30 @@
+@import "../../config.scss";
+
+.color_picker {
+  @include border($cl2, $cl2, 2px);
+  overflow: hidden;
+  padding: 15px;
+  position: absolute;
+  bottom: unset;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+@media (max-width: 1000px) {
+  .color_picker {
+    bottom: unset;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .colorful {
+    width: 100%;
+  }
+}

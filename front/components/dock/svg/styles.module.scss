@@ -1,0 +1,32 @@
+@import "../../config.scss";
+
+.svg {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes an {
+  0% {
+    border-color: $cl1;
+  }
+
+  100% {
+    border-color: rgb(170, 255, 250);
+  }
+}
+
+.dock-item-border {
+  background-color: rgba(255, 139, 113, 0.289);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  outline: none;
+  @include border($cl1, $cl5, 3px);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+
+  &-active {
+    @extend .dock-item-border;
+    animation: an ease-in-out 400ms 1 forwards;
+  }
+}

@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  users User[]
+}
+
+model User {
+  id                  Int                @id @default(autoincrement())
+  email               String             @unique
+  hashPassword        String?
+  loggedWith          String
+  role                Role               @relation(fields: [roleId], references: [id])
+  roleId              Int
+  profile             Profile?
+  token               token?
+  userGroupAnalysisId Int?
+  UserGroupAnalysis   UserGroupAnalysis? @relation(fields: [userGroupAnalysisId], references: [id])
+
+  taskCompletions TaskCompletion[]
+  achievements    UserAchievement[]
+}
+
+model UserGroupAnalysis {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  nameForUser String
+  user        User[]
+}
+
+model token {
+  id     Int    @id @default(autoincrement())
+  token  String
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  name   String?
+  avatar String?
+  header String?
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int     @unique
+}
+
+model Task {
+  id            Int              @id @default(autoincrement())
+  title         String
+  description   String?
+  type          String           @default("MENTOR")
+  url           String           @default("")
+  achievement   Achievement      @relation(fields: [achievementId], references: [id])
+  achievementId Int              @unique
+  completions   TaskCompletion[]
+}
+
+model Achievement {
+  id    Int               @id @default(autoincrement())
+  title String
+  icon  String
+  task  Task?
+  users UserAchievement[]
+}
+
+model TaskCompletion {
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  task      Task    @relation(fields: [taskId], references: [id])
+  taskId    Int
+  completed Boolean @default(true)
+
+  @@unique([userId, taskId])
+}
+
+model UserAchievement {
+  id            Int         @id @default(autoincrement())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int
+  achievement   Achievement @relation(fields: [achievementId], references: [id])
+  achievementId Int
+
+  @@unique([userId, achievementId])
+}

@@ -1,0 +1,74 @@
+@import "../config.scss";
+
+.container {
+  position: relative;
+  min-width: calc(100% - 60px);
+  max-width: 80%;
+  padding: 15px 30px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: calc(100% - 30px);
+}
+
+.floorImage {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  transform: translate(50%, -50%);
+  border-radius: 15px;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.upButton,
+.downButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upButton {
+  top: 10px;
+}
+
+.downButton {
+  bottom: 10px;
+}
+
+.floorIndicator {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: $cl3;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: $cl2;
+}

@@ -1,0 +1,57 @@
+@import "../config.scss";
+
+.container-message {
+  display: flex;
+  text-wrap: nowrap;
+  align-items: center;
+  width: min-content;
+  padding: 7px 15px;
+  margin-top: 120px;
+  margin: 30px 0;
+  @include border($cl2, $cl1, 2px);
+  backdrop-filter: blur(5px);
+
+  @media (max-width: 1000px) {
+    width: calc(100% - 30px);
+    text-wrap: wrap;
+  }
+}
+
+h3 {
+  font-size: 50px;
+  font-weight: 600;
+  background-image: linear-gradient(
+    to right bottom,
+    #941d3a,
+    #f82952,
+    #17c77b,
+    #03654e
+  );
+  color: transparent;
+  line-height: 60px;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  span {
+    color: black;
+  }
+}
+
+h4 {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: left;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  line-height: 150%;
+}
+
+p {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
